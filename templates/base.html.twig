@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    </head>
+
+    <body>
+        {% block body %}
+            <a href="/blog/index" title="Main">HomePage</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path("poll",{'userid': app.user.id }) }}" title="Polls">Polls</a>
+            {% endif %}
+           {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ url('newpoll') }}" title="Polls">New Poll</a>
+            {% endif %}
+            <a href="/blog/list" title="Lista">Article List</a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY')==false %}
+                <a href="/blog/login" title="Login">Login</a>
+                <a href="/blog/register" title="Register">Register</a>
+            {% else %}
+                <a href="/blog/logout" title="Logout">Logout</a>
+            {% endif %}
+            <a href="/blog/about" title="About">About Me</a>
+        {% endblock %}
+    {% block content %}
+    {% endblock %}
+    </body>
+</html>

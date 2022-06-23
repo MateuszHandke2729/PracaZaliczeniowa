@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <ol>
+        {% if allCategories is defined %}
+        {% for category in allCategories %}
+            <li><a href="{{ url('view',{'id':category.id}) }}">{{ category.name }}</li>
+        {% endfor %}
+        {% endif %}
+    </ol>
+    <a href="{{ url("newCat") }}">New Category</a>
+    <a href="{{ url("newArt") }}">New Article</a>
+{% endblock %}
+

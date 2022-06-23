@@ -1,0 +1,24 @@
+{% extends "blog/index.html.twig" %}
+{% block content%}
+    {{ form(form) }}
+    <ol>
+    {% for poll in polls %}
+        <li>{{ poll.question}}
+            {%if poll.status == true %}
+                <a href="{{url('status',{'pollid':poll.id}) }}">   turn off poll</a>
+            {% else %}
+                <a href="{{ url('status',{'pollid':poll.id}) }}">   turn on poll</a>
+                {% endif %}
+        </li>
+        <ul>
+        {% for answer in poll.answers %}
+            <li>{{ answer}}</li>
+        {% endfor %}
+        </ul>
+        <p>
+            users voted: {% for users in poll.usersVoted %}
+        {{ users}},
+    {% endfor %}</p>
+    {% endfor %}
+    </ol>
+{% endblock %}

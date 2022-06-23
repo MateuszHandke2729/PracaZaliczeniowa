@@ -1,0 +1,47 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+app_lucky_number:
+  path: /lucky/number
+  controller: App\Controller\LuckyController::number
+HomePage:
+  path: /blog/index
+  controller: App\Controller\BlogController::index
+login:
+  path: /blog/login
+  controller: App\Controller\LoginController::index
+logout:
+  path: blog/logout
+  methods: GET
+register:
+  path: /blog/register
+  controller: App\Controller\RegistrationController::register
+about:
+  path: /blog/about
+  controller: App\Controller\BlogController::about
+poll:
+  path: /blog/poll{userid}
+  controller: App\Controller\BlogController::poll
+status:
+  path: /blog/status{pollid}
+  controller: App\Controller\BlogController::pollstatus
+newpoll:
+  path: /blog/newpoll
+  controller: App\Controller\BlogController::newpoll
+newCat:
+  path: /blog/addCategory
+  controller: App\Controller\BlogController::addCategory
+newArt:
+  path: /blog/addArticle
+  controller: App\Controller\BlogController::addArticle
+view:
+  path: /blog/view{id}
+  controller: App\Controller\BlogController::view
+artView:
+    path: /blog/artView{id}
+    controller: App\Controller\BlogController::artView
+allCat:
+  path: /blog/list
+  controller: App\Controller\BlogController::allCategories
+

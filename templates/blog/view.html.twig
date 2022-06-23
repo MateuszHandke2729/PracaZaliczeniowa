@@ -1,0 +1,11 @@
+{% extends "blog/index.html.twig" %}
+{% block content%}
+    <ol>
+        {% if articles is defined %}
+            {% for article in articles %}
+                <li><a href="{{ url('artView',{'id':article.id}) }}">{{ article.description }}</li>
+            {% endfor %}
+        {% endif %}
+    </ol>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "blog/index.html.twig" %}
+{% block content%}
+    <style>
+        label:after { content:"\a"; white-space:pre; }
+    </style>
+    <h1>{{ poll.question }}</h1>
+    {{ form_start(form) }}
+    <ol>
+        {{ form_widget(form.answers) }}
+        {% if usermail in poll.usersVoted %}
+            <p>juz zaglosowano</p>
+            {{ form_row(form.vote, { 'attr': {'disabled': 'true'}}) }}
+        {% else %}
+            {{ form_row(form.vote) }}
+
+        {% endif %}
+
+    {{ form_end(form) }}
+    </ol>
+
+{% endblock %}
